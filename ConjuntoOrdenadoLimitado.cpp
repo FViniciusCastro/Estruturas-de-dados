@@ -32,15 +32,16 @@ bool vazia(Conjunto &C) {
 
 bool pertence(Conjunto &C, char elemento) {
     
-    int i = 0 , f = C.n-1;
+    int i = 0 , f = C.n; 
+    bool result = false;
     
     while(i < f) {
         
         int m = (i+f)/2;
-        cout << "\n O MEIO É " << C.array[m] << endl << endl;
         if(C.array[m] == elemento){
             
             return true;
+            break;
             
         } else if(C.array[m] > elemento) {
             
@@ -52,8 +53,7 @@ bool pertence(Conjunto &C, char elemento) {
             
         }
     }
-    return false;
-    
+    return result;
 }
 
 void adicionarNovo(Conjunto &C, char elemento) {
@@ -154,6 +154,8 @@ int main() {
     
     Conjunto C;
     inicializar(C);
+    
+    
     
     adicionarSeNovo(C, 'C');
     getConjunto(C);
