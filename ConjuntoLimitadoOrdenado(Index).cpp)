@@ -1,0 +1,136 @@
+#include <iostream>
+
+using namespace std;
+
+
+struct Conjunto{
+  
+    char array[10];
+    int n;
+    
+};
+
+void inicializar(Conjunto &C) {
+    
+    C.n = 0;
+    
+}
+
+int getIndex(Conjunto &C, char elemento, bool adicionar) { // busca binária
+
+    int i = 0, f = C.n-1, index = -1;
+    while( i <= f) {
+        
+        int m = (i+f)/2;
+        if(C.array[m] == elemento and adicionar == false) {
+            
+            index = m;
+            break;
+            
+        } else if(adicionar == true and C.array[m] < elemento and C.array[m+1] > elemento) {
+                
+            index = m;
+            break;
+        
+        } else if(C.array[m] > elemento){
+            
+            f = --m;
+            
+        } else if(C.array[m] < elemento){
+            
+            i = ++m;
+            
+        }
+    }
+    return index;
+    
+}
+
+bool cheia(Conjunto &C) {
+    
+    bool result = (C.n >= 10) ? true : false; 
+    return result;
+    
+}
+
+bool vazia(Conjunto &C) {
+    
+    bool result = (C.n == 0) ? true : false;
+    return result;
+    
+}
+
+bool pertence(Conjunto &C, char elemento) {
+    
+    bool result = (getIndex(C, elemento) != -1) ? true : false;
+    return result;
+    
+}
+
+void adicionarNovo(Conjunto &C, char elemento) {
+    
+    if(!cheia(C)){
+        
+        
+            
+        }
+        
+    } else {
+        
+        cout << "conjunto já esta cheio\n";
+        
+    }
+}
+
+void adicionarSeNovo(Conjunto &C, char elemento) {
+    
+    if(!pertence(C, elemento)) {
+        
+        adicionarNovo(C, elemento);
+        
+    } else {
+        
+        cout << "elemento já  pertecente ao conjunto\n";
+        
+    }
+}
+
+void remover(Conjunto &C, char elemento) {
+    
+    if(pertence(C, elemento) and !vazia(C)) {
+        
+        cout << "o elemento " << elemento << " foi removido\n";
+        
+        for(int i=getIndex(C, elemento, false) ; i<C.n ; i++) {
+            
+            C.array[i] = C.array[i+1];
+            
+        }
+        C.n--;
+        
+    } else {
+        
+        cout << "o elemento não pertence ao conjunto ou o conjunto esta vazi0\n";
+        
+    }
+}
+
+void getConjunto(Conjunto &C) { // para teste
+
+    for(int i=0 ; i<C.n ; i++){  
+        
+        cout << C.array[i];
+        
+    }
+    cout << endl;
+    
+}
+
+
+
+int main() {
+    
+    Conjunto C;
+    inicializar(C);
+    
+}
