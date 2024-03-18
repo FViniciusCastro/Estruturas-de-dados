@@ -34,26 +34,26 @@ int getIndex(Conjunto &C, char elemento, bool adicionar) { // busca binária
 
     int i = 0, f = C.n-1, index = C.n;
     
-    while( i <= f) {
+    while(i <= f) {
+        
+        cout << "suamae";
         
         int m = (i+f)/2;
         if(C.array[m] == elemento and adicionar == false) {
             
-            index = m;
-            break;
+            return m;
             
-        } else if(adicionar == true and C.array[m] < elemento and C.array[m+1] > elemento) {
+        } else if(adicionar == true and C.array[m] < elemento and (m == C.n-1 or C.array[m+1] > elemento)) {
                 
-            index = m;
-            break;
+            return m;
         
         } else if(C.array[m] > elemento){
             
-            f = --m;
+            f = m - 1;
             
         } else if(C.array[m] < elemento){
             
-            i = ++m;
+            i = m + 1;
             
         }
     }
