@@ -25,10 +25,10 @@ bool vazio(Conjunto &C) {
 }
 
 int getIndex(Conjunto &C, char elemento, int i, int f, bool aux){
-    if(i >= f) return -1;
+    if(i > f) return -1;
     else {
-        int m =(i+f)/2;
-        if(C.array[m] == elemento or (C.array[m] < elemento and C.array[m+1] > elemento and aux == true)) 
+        int m = i + ((f-i)/2);
+        if(C.array[m] == elemento or (C.array[m] < elemento and /*C.array[m+1] > elemento and*/ aux == true)) 
             return m;
         else if(C.array[m] < elemento) 
             return getIndex(C, elemento, m+1, f, aux);
