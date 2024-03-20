@@ -36,7 +36,6 @@ int getIndex(Conjunto &C, char elemento, bool adicionar) { // busca binária
     
     while(i <= f) {
         
-        cout << "suamae";
         
         int m = (i+f)/2;
         if(C.array[m] == elemento and adicionar == false) {
