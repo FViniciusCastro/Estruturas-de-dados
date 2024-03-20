@@ -2,200 +2,81 @@
 
 using namespace std;
 
-
 struct Conjunto{
-  
+    
     char array[5];
     int n;
     
 };
 
 void inicializar(Conjunto &C) {
-    
     C.n = 0;
-    
 }
 
-bool cheia(Conjunto &C) {
-    
-    bool result = (C.n >= 5) ? true : false; 
+
+bool cheio(Conjunto &C) {
+    bool result = (C.n == 5) ? true: false;
     return result;
-    
 }
 
-bool vazia(Conjunto &C) {
-    
-    bool result = (C.n == 0) ? true : false;
-    return result;
-    
+bool vazio(Conjunto &C) {
+    bool result = (C.n == 0) ? true: false;
+    return result;    
 }
 
-int getIndex(Conjunto &C, char elemento, bool adicionar) { // busca binária
-
-    int i = 0, f = C.n-1, index = C.n;
+int getIndex(Conjunto &C, char elemento, int i, int f, bool aux){
     
-    while(i <= f) {
-        
-        
-        int m = (i+f)/2;
-        if(C.array[m] == elemento and adicionar == false) {
-            
+    if(i>=f) return -1;
+    else {
+        int m =(i+f)/2;
+        if(C.array[m] == elemento or (C.array[m] < elemento and C.array[m+1] > elemento and aux == true)) 
             return m;
-            
-        } else if(adicionar == true and C.array[m] < elemento and (m == C.n-1 or C.array[m+1] > elemento)) {
-                
-            return m;
-        
-        } else if(C.array[m] > elemento){
-            
-            f = m - 1;
-            
-        } else if(C.array[m] < elemento){
-            
-            i = m + 1;
-            
-        }
+        else if(C.array[m] < elemento) 
+            return getIndex(C, elemento, m+1, f, aux);
+        else
+            return getIndex(C, elemento, i, m-1, aux);
     }
-    return index;
-    
 }
 
-bool pertence(Conjunto &C, char elemento) {
+void inserir(Conjunto &C, char elemento) {
     
-    bool result = (getIndex(C, elemento, false) != -1) ? true : false;
-    return result;
-    
-}
-
-void adicionarNovo(Conjunto &C, char elemento) {
-    
-    if(!cheia(C)){
-        
-        for(int i = C.n-1; i>=getIndex(C, elemento, true) ;i--){
-            
+    if(!cheio(C)){
+        int index = getIndex(C, elemento, 0, C.n-1, true);
+        for(int i=C.n-1; i>=index; i--){
             C.array[i+1] = C.array[i];
-            
         }
-        C.array[getIndex(C, elemento, true)] = elemento;
         C.n++;
         
-        cout << "o elemento " <<  elemento << " foi adicionado no espaço " << getIndex(C, elemento, true) << endl;
-    
-    } else {
-        
-        cout << "conjunto já esta cheio\n";
-        
-    }
-}
-
-void adicionarSeNovo(Conjunto &C, char elemento) {
-    
-    if(!pertence(C, elemento)) {
-        
-        adicionarNovo(C, elemento);
-        
-    } else {
-        
-        cout << "elemento já  pertecente ao conjunto\n";
-        
-    }
+    } else cout << "impossivel inserir, conjunto cheioz\n";
 }
 
 void remover(Conjunto &C, char elemento) {
-    
-    if(pertence(C, elemento) and !vazia(C)) {
-        
-        cout << "o elemento " << elemento << " foi removido\n";
-        
-        for(int i=getIndex(C, elemento, false) ; i<C.n ; i++) {
-            
-            C.array[i] = C.array[i+1];
-            
+    int index = getIndex(C, elemento, 0, C.n-1, false);
+    if(!vazio(C)){ 
+        if(C.n == 1) inicializar(C);
+        else if(index == -1) cout << "o elemento " << elemento <<" não pertence ao conjunto\n";
+        else {
+            for(int i = index; i<C.n-1 ;i++){
+                C.array[i] = C.array[i+1];
+            }
+            C.n--;
         }
-        C.n--;
-        
-    } else {
-        
-        cout << "o elemento não pertence ao conjunto ou o conjunto esta vazi0\n";
-        
-    }
+    } else cout << "impossivel remover, conjunto vazio\n";
 }
 
-void getConjunto(Conjunto &C) { // para teste
 
-    for(int i=0 ; i<C.n ; i++){  
-        
-        cout << C.array[i];
-        
-    }
-    cout << endl;
-    
-}
+
+
+
+
+
+
+
+
+
+
+
 
 int main() {
-    
-    Conjunto C;
-    inicializar(C);
-    
-    int opc = -1;
-    char elemento;
-    
-    while (opc != 0){
-        
-        cout << "================= MENU ==================\n" << endl << "escolha a operação:" << endl <<"1 - inserir\n2 - inserir se novo\n3 - remover\n4 - vazio\n5 - cheio\n0 - para encerrar o programa\n\n"; 
-        cin >> opc;
-        
-        switch (opc){
-            
-            case 1:
-                cout << "digite o elemento que deseja inserir\n";
-                cin >> elemento;
-                adicionarNovo(C, elemento);
-                break;
-            case 2:
-                cout << "digite o elemento que deseja inserir\n";
-                cin >> elemento;
-                adicionarSeNovo(C, elemento);
-                break;
-            case 3:
-                cout << "qual elemento deseja remover\n";
-                cin >> elemento;
-                remover(C, elemento);
-                break;
-            case 4:
-                if(vazia(C)) 
-                cout << "o conjunto está vazio\n";
-                else 
-                cout << "o conjunto não está vazio\n";
-                break;
-            case 5:
-                if(cheia(C)) 
-                cout << "o conjunto está cheio\n";
-                else 
-                cout << "o conjunto não está cheio\n";
-                break;
-            case 6:
-                getConjunto(C);
-                break;
-            default:
-            cout << "operação invalida\n";
-                break;
-        }
-        
-        
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
