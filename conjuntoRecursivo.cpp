@@ -41,6 +41,7 @@ void inserir(Conjunto &C, char elemento) {
     
     if(!cheio(C)){
         int index = getIndex(C, elemento, 0, C.n-1, true);
+        if(index == -1) index = 0;
         for(int i=C.n-1; i>=index; i--){
             C.array[i+1] = C.array[i];
         }
@@ -48,7 +49,7 @@ void inserir(Conjunto &C, char elemento) {
         C.array[index] = elemento;
         C.n++;
         
-    } else cout << "impossivel inserir, conjunto cheioz\n";
+    } else cout << "impossivel inserir, conjunto cheio\n";
 }
 
 void remover(Conjunto &C, char elemento) {
