@@ -31,17 +31,17 @@ void empilhar(Pilha &p, string linha){
     if(p.n == p.tam){
 
         int tam2 = p.tam*2;
-        string* w = new string[tam2];
+        string* w = new string[tam2]; // criando novo ponteiro e apontando para novo vetor 2* maior que o anterior
 
-        for(int i = 0 ; i < p.n ; i++) w[i] = p.v[i];
+        for(int i = 0 ; i < p.n ; i++) w[i] = p.v[i]; // copiando os endereços de cada variavel
 
-        delete p.v;
-        p.v = w;
-        p.tam = tam2;
+        delete p.v; // deletando o enndereço antigo
+        p.v = w; // copiando o endereço novo
+        p.tam = tam2; // mudando o tamanho
       
     }
-    p.v[p.n] = linha;
-    p.n++;
+    p.v[p.n] = linha; 
+    p.n++; // adicionando nova linha e aumentando o n
 
 }
 
