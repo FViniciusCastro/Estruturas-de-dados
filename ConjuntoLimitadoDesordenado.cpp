@@ -1,3 +1,4 @@
+//conjunto limitado desordenao via vetor
 #include <iostream>
 
 using namespace std;

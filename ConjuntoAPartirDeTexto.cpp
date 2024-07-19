@@ -1,3 +1,4 @@
+// exercicio de greve
 #include <iostream>
 #include <cctype>
 

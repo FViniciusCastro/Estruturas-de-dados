@@ -1,3 +1,4 @@
+// conjunto ordenado via vetor
 #include <iostream>
 
 using namespace std;
