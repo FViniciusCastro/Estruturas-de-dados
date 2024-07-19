@@ -1,6 +1,7 @@
 /*Defina um tipo para representar uma matriz retangular m x n de double's (caso deseje, você pode usar os templates exemplificados nos exercícios da aula 07 (vídeo), em 04/04/2024, para implementar uma definição genérica quanto ao tipo dos elementos). Como estrutura de dados, utilize um vetor para representar as "m" linhas: cada uma das suas posições deve ser um ponteiro apontando para um vetor de "n" números. Escreva funções para ler das e escrever nas posições da matriz. Para testar a sua implementação, escreva um programa que leia do usuário duas matrizes de mesmas dimensões e que então calcule e imprima a soma dessas matrizes.*/
 
-//criar estrutura e construtor
+//exercício de greve
+
 
 #include<iostream>
 

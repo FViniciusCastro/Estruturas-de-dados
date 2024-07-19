@@ -1,3 +1,4 @@
+// dicionario ordenado via vetor estático
 #include <iostream>
 
 using namespace std;

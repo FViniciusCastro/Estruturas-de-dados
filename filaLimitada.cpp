@@ -1,4 +1,4 @@
-
+// fila limitada via vetor estático
 #include <iostream>
 #define size 5
 

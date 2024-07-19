@@ -1,4 +1,4 @@
-
+// fila via vetor dinâmico
 #include <iostream>
 
 using namespace std;

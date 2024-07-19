@@ -1,3 +1,4 @@
+// pilha via funções externas
 #include <iostream>
 
 using namespace std;

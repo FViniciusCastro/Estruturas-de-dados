@@ -1,3 +1,4 @@
+// inversor de strings via pilha (usando biblioteca)
 #include <iostream>
 #include <stack>
 #include <string>
