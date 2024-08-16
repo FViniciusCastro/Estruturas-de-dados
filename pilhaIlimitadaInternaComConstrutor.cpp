@@ -3,7 +3,7 @@
 
 using namespace std;
 
-struct Pilha{
+struct Pilha {
     string *v;
     int tam;
     int n;
