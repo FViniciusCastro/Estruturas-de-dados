@@ -1,3 +1,4 @@
+// Matriz via um unico vetor
 #include <iostream>
 #include <exception>
 

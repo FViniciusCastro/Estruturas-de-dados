@@ -1,3 +1,4 @@
+//transpositor de matriz via alocação dinamica
 #include <exception>
 #include <iostream>
 

@@ -1,3 +1,4 @@
+//somador de matriz via alocação dinamica
 #include <iostream>
 
 using namespace std;
